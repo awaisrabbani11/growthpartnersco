@@ -23,7 +23,7 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 bg-slate-950/90 backdrop-blur-md border-b border-white/5 ${isScrolled ? 'py-2' : 'py-4'}`}>
+    <nav className={`fixed w-full z-50 transition-all duration-300 border-b border-white/5 ${isScrolled ? 'py-2 bg-slate-950 shadow-2xl' : 'py-4 bg-slate-950/90 backdrop-blur-md'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
           <Link to="/" className="flex items-center gap-2 group">
@@ -44,16 +44,16 @@ export default function Navbar() {
                   {link.dropdown && <ChevronDown size={16} />}
                 </Link>
                 {link.dropdown && (
-                  <div className="absolute top-full left-0 mt-2 w-64 bg-white rounded-xl shadow-xl border border-slate-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all transform translate-y-2 group-hover:translate-y-0">
+                  <div className="absolute top-full left-0 mt-2 w-64 bg-slate-900 rounded-xl shadow-2xl border border-white/10 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all transform translate-y-2 group-hover:translate-y-0">
                     <div className="p-2">
                       {link.dropdown.map((item) => (
                         <Link
                           key={item.id}
                           to={item.path}
-                          className="block px-4 py-3 rounded-lg text-slate-600 hover:bg-slate-50 hover:text-emerald-600 transition-colors"
+                          className="block px-4 py-3 rounded-lg text-slate-300 hover:bg-white/5 hover:text-emerald-400 transition-colors"
                         >
                           <div className="font-semibold text-sm">{item.title}</div>
-                          <div className="text-xs text-slate-400 line-clamp-1">{item.description}</div>
+                          <div className="text-xs text-slate-500 line-clamp-1">{item.description}</div>
                         </Link>
                       ))}
                     </div>
@@ -83,7 +83,7 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-white border-t border-slate-100 overflow-hidden"
+            className="md:hidden bg-slate-950 border-t border-white/10 overflow-hidden"
           >
             <div className="px-4 py-6 space-y-4">
               {navLinks.map((link) => (
@@ -91,18 +91,18 @@ export default function Navbar() {
                   <Link
                     to={link.path}
                     onClick={() => setIsOpen(false)}
-                    className="block text-xl font-bold text-slate-900 hover:text-emerald-600"
+                    className="block text-xl font-bold text-white hover:text-emerald-400"
                   >
                     {link.name}
                   </Link>
                   {link.dropdown && (
-                    <div className="mt-2 ml-4 space-y-2 border-l-2 border-slate-100 pl-4">
+                    <div className="mt-2 ml-4 space-y-2 border-l-2 border-white/10 pl-4">
                       {link.dropdown.map((item) => (
                         <Link
                           key={item.id}
                           to={item.path}
                           onClick={() => setIsOpen(false)}
-                          className="block text-slate-500 hover:text-emerald-600 py-1"
+                          className="block text-slate-400 hover:text-emerald-400 py-1"
                         >
                           {item.title}
                         </Link>
